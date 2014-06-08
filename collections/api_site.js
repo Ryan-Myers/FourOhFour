@@ -1,0 +1,1 @@
+API = new Meteor.Collection('api');
