@@ -1,0 +1,1 @@
+Site = new Meteor.Collection('site');

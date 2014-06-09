@@ -1,3 +1,3 @@
-Meteor.publish('api', function() {
-  return API.find();
+Meteor.publish('site', function() {
+  return Site.find();
 });
