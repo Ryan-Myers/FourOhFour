@@ -39,12 +39,13 @@
   
   /**
    * Called when is404 returns the request. If the page is 404, then send the current page and API key to the server for logging.
+   * @param bIs404
    */
   is404(location.href, function(bIs404) {
     if (bIs404) {
       var scriptSrc = document.getElementById('FourOhFour').src,
         apiKey = scriptSrc.substring(scriptSrc.indexOf('?')+ 1),
-        params = apiKey + '&page=' + location.href;
+        params = apiKey + '&page=' + location.href + '&status=404';
       
       var post = new XMLHttpRequest();
       post.open('POST', 'http://192.168.1.103:3000/api/404', true);
