@@ -47,8 +47,11 @@
         apiKey = scriptSrc.substring(scriptSrc.indexOf('?')+ 1),
         params = apiKey + '&page=' + location.href + '&status=404';
       
+      var a = document.createElement('a');
+      a.href = scriptSrc;
+      
       var post = new XMLHttpRequest();
-      post.open('POST', 'http://192.168.1.103:3000/api/404', true);
+      post.open('POST', 'http://' + a.host + '/api/404', true);
       post.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       post.setRequestHeader("Content-length", params.length); 
       
