@@ -44,14 +44,14 @@
   is404(location.href, function(bIs404) {
     if (bIs404) {
       var scriptSrc = document.getElementById('FourOhFour').src,
-        apiKey = scriptSrc.substring(scriptSrc.indexOf('?')+ 1),
-        params = apiKey + '&page=' + location.href + '&status=404';
-      
-      var a = document.createElement('a');
-      a.href = scriptSrc;
+          apiKey = scriptSrc.substring(scriptSrc.indexOf('?')+ 1),
+          a = document.createElement('a');
+          a.href = scriptSrc;
+      var postURL = a.protocol + '//' + a.host + '/api/404',
+          params = apiKey + '&page=' + location.href + '&status=404';
       
       var post = new XMLHttpRequest();
-      post.open('POST', 'http://' + a.host + '/api/404', true);
+      post.open('POST', postURL, true);
       post.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       post.setRequestHeader("Content-length", params.length); 
       
