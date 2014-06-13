@@ -1,3 +1,3 @@
 Meteor.publish('site', function() {
-  return Site.find();
+  return Site.find({ownerId: this.userId});
 });
