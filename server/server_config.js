@@ -1,0 +1,1 @@
+WebApp.addHtmlAttributeHook(function (request) { return {'lang' : 'en'}; });
