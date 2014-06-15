@@ -4,6 +4,7 @@
  *    _id: ObjectId("53964ab534e98a4b92bc218d"),
  *    apiKey: '53964aac34e98a4b92bc218c',
  *    ownerId: ObjectId("RfZGGzwLvggbArHZx"), //The user who owns this apiKey/Site.
+ *    siteName: 'test.com',
  *    errors: [{
  *      status: 404,
  *      userIP: '127.0.0.1',
@@ -36,16 +37,3 @@ Site.deny({
     return _.contains(fields, 'ownerId');
   }
 });
-
-//On server startup, if the database is empty, create a test site with an apiKey.
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    if (Site.find().count() === 0) {
-      Site.insert({
-        apiKey: '53964aac34e98a4b92bc218c',
-        ownerId: 'gLFf47h9rQYNG66Z5',
-        errors: []
-      });
-    }
-  });
-}
