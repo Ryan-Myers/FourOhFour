@@ -3,8 +3,6 @@
     "iron-router": {},
     "bootstrap-3": {},
     "spin": {},
-    "accounts-ui-bootstrap-3": {},
-    "crypto-base": {},
-    "crypto-sha1": {}
+    "accounts-ui-bootstrap-3": {}
   }
 }

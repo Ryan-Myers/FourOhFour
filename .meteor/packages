@@ -10,6 +10,4 @@ accounts-password
 spin
 accounts-google
 accounts-ui-bootstrap-3
-crypto-base
-crypto-sha1
 random
