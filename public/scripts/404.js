@@ -45,10 +45,11 @@
     if (bIs404) {
       var scriptSrc = document.getElementById('FourOhFour').src,
           apiKey = scriptSrc.substring(scriptSrc.indexOf('?')+ 1),
+          referer = (document.referrer.length > 0) ? document.referrer : 'blank',
           a = document.createElement('a');
           a.href = scriptSrc;
       var postURL = a.protocol + '//' + a.host + '/api/404',
-          params = apiKey + '&page=' + location.href + '&status=404';
+          params = apiKey + '&page=' + location.href + '&referer=' + referer + '&status=404';
       
       var post = new XMLHttpRequest();
       post.open('POST', postURL, true);
