@@ -1,0 +1,15 @@
+<template name="instructions">
+  <div id="instructions">
+    <h1>Instructions</h1>
+    <p>Below is a list of your sites, with the corresponding script tags you can use to embed into the site.</p>
+    {{#each sites}}
+      <div class="site-script">
+        <span class="site-name">{{siteName}}</span>
+        <span class="site-script">
+          &lt;script id="FourOhFour" type="text/javascript" 
+            src="http://ryanmyers.ca:3000/scripts/404.js?apiKey={{apiKey}}">&lt;/script>
+        </span>
+      </div>
+    {{/each}}    
+  </div>
+</template>

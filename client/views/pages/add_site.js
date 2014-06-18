@@ -12,5 +12,7 @@ Template.addSite.events({
     };
     
     Site.insert(site);
+    
+    Router.go('/instructions');
   }
 });
