@@ -1,0 +1,19 @@
+<template name="report">
+  <div id="report">
+    <h1>Report</h1>
+    <p>A current list of 404 error's on your site.</p>
+    {{#each sites}}
+      <div class="sites">
+        <div class="sites-name">{{siteName}}</div>
+        {{#each errors}}
+          <div class="errors">
+            <div class="error-ip">userIP: {{userIP}}</div>
+            <div class="error-datetime">datetime: {{datetime}}</div>
+            <div class="error-page">page: {{page}}</div>
+            <div class="error-page">referer: {{referer}}</div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}    
+  </div>
+</template>
