@@ -3,6 +3,7 @@
     "iron-router": {},
     "bootstrap-3": {},
     "spin": {},
-    "accounts-ui-bootstrap-3": {}
+    "accounts-ui-bootstrap-3": {},
+    "aggregation": {}
   }
 }

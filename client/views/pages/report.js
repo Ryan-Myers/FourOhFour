@@ -14,3 +14,27 @@ Template.report.sites = function () {
     referer: 'http://example.com/GoodPageWithBadLink.html'
   }];*/
 };
+
+Template.report.siteCounts = function () {
+  return Session.get("siteCounts");
+};
+
+var pipe = [];
+pipe.push(
+  {$project: {'errors': 1}}, 
+  {$unwind: "$errors"}, 
+  {$group: {'_id': "$errors.page", 'count': {$sum: 1}}}
+);
+  
+return Site.aggregate(pipe, function (err, docs) {
+  if (docs) {
+    console.log("docs");
+    console.log(docs);
+    Session.set("siteCounts", docs);
+  }
+  
+  if (err) {
+    console.log("err");
+    console.log(err);
+  }
+});

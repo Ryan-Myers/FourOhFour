@@ -14,6 +14,11 @@
           </div>
         {{/each}}
       </div>
-    {{/each}}    
+    {{/each}}
+    
+    <h1>Aggregations</h1>
+    {{#each siteCounts}}
+      {{_id}} is counted {{count}} times.
+    {{/each}}
   </div>
 </template>
