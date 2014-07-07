@@ -17,24 +17,30 @@ Template.report.sites = function () {
 
 Template.report.siteCounts = function () {
   return Session.get("siteCounts");
+  //[{_id: "http://example.com/BadLink", count: 1}, {_id: "http://example.com/BadLink", count: 12}]
 };
 
-var pipe = [];
-pipe.push(
-  {$project: {'errors': 1}}, 
-  {$unwind: "$errors"}, 
-  {$group: {'_id': "$errors.page", 'count': {$sum: 1}}}
-);
-  
-return Site.aggregate(pipe, function (err, docs) {
-  if (docs) {
-    console.log("docs");
-    console.log(docs);
-    Session.set("siteCounts", docs);
-  }
-  
-  if (err) {
-    console.log("err");
-    console.log(err);
-  }
+//TODO: This only runs once when loading, should it update in realtime?
+//Also, this only matches on ownerId, there should be a match on apiKey instead.
+Meteor.startup(function () {
+  Deps.autorun(function () {
+    var pipe = [];
+    pipe.push(
+      {$match: {ownerId: Meteor.userId()}},
+      {$project: {'errors': 1}}, 
+      {$unwind: "$errors"}, 
+      {$group: {'_id': "$errors.page", 'count': {$sum: 1}}}
+    );
+    
+    Site.aggregate(pipe, function (err, docs) {
+      if (docs) {
+        Session.set("siteCounts", docs);
+      }
+      
+      if (err) {
+        console.log("err");
+        console.log(err);
+      }
+    });
+  });
 });
