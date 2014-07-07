@@ -1,23 +1,30 @@
 Template.report.sites = function () {
-  return Site.find({'ownerId': Meteor.userId()});
-  /*return [{
-    status: 404, 
-    userIP: '127.0.0.1',
-    datetime: ISODate("2014-06-10T00:00:44.687Z"),
-    page: 'http://example.com/404.html',
-    referer: 'http://example.com/GoodPageWithBadLink.html'
-  },{
-    status: 404, 
-    userIP: '127.0.0.1',
-    datetime: ISODate("2014-06-10T00:00:44.687Z"),
-    page: 'http://example.com/404.html',
-    referer: 'http://example.com/GoodPageWithBadLink.html'
-  }];*/
-};
-
-Template.report.siteCounts = function () {
-  return Session.get("siteCounts");
-  //[{_id: "http://example.com/BadLink", count: 1}, {_id: "http://example.com/BadLink", count: 12}]
+  var 
+    siteCounts = Session.get("siteCounts"),
+    errorDetails = Site.find({'ownerId': Meteor.userId()}),
+    returnable = [];
+  
+  for (var i in siteCounts) {
+    var errors = {
+      'id': i,
+      'page': siteCounts[i]._id,
+      'count':  siteCounts[i].count,
+      'details': []
+    };
+    
+    //Add all of the meta data for each error to the group for the page that it matches.
+    errorDetails.forEach(function (sites) {
+      for (var j in sites.errors) {
+        if (sites.errors[j].page == errors.page) {
+          errors.details.push(sites.errors[j]);
+        }
+      }
+    });
+    
+    returnable.push(errors);
+  }
+  
+  return returnable;
 };
 
 //TODO: This only runs once when loading, should it update in realtime?
@@ -26,7 +33,7 @@ Meteor.startup(function () {
   Deps.autorun(function () {
     var pipe = [];
     pipe.push(
-      {$match: {ownerId: Meteor.userId()}},
+      {$match: {'ownerId': Meteor.userId()}},
       {$project: {'errors': 1}}, 
       {$unwind: "$errors"}, 
       {$group: {'_id': "$errors.page", 'count': {$sum: 1}}}
