@@ -1,9 +1,9 @@
 {
   "packages": {
     "iron-router": {},
-    "bootstrap-3": {},
     "spin": {},
     "accounts-ui-bootstrap-3": {},
-    "aggregation": {}
+    "aggregation": {},
+    "bootswatch-cerulean": {}
   }
 }

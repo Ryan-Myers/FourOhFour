@@ -5,10 +5,10 @@
 
 standard-app-packages
 iron-router
-bootstrap-3
 accounts-password
 spin
 accounts-google
 accounts-ui-bootstrap-3
 random
 aggregation
+bootswatch-cerulean

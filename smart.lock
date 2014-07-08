@@ -3,21 +3,16 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "bootstrap-3": {},
       "spin": {},
       "accounts-ui-bootstrap-3": {},
-      "aggregation": {}
+      "aggregation": {},
+      "bootswatch-cerulean": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.1",
         "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
-      },
-      "bootstrap-3": {
-        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v3.2.0-1",
-        "commit": "17a63902fc6cf1096c5289d963c66cf28b474727"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
@@ -26,13 +21,18 @@
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.3.2",
-        "commit": "8686c0d3107cf48c72a5500b027f081c7e79dbbc"
+        "tag": "v0.3.3",
+        "commit": "2e50b605d8d5ed68e48c4529a65f13552d8af3f9"
       },
       "aggregation": {
         "git": "https://github.com/jeeeyul/meteor-aggregation.git",
         "tag": "v0.0.0.2",
         "commit": "f5d5ad88daf7c3bfdbb74dd4a1be5ee13f9dbbd5"
+      },
+      "bootswatch-cerulean": {
+        "git": "https://github.com/Ryan-Myers/meteor-bootswatch-cerulean.git",
+        "tag": "v3.2.0-3",
+        "commit": "3e283aae8449c6b4c0e566321326c18c95c3048c"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
