@@ -27,6 +27,59 @@ Template.report.sites = function () {
   return returnable;
 };
 
+Template.report.rendered = function () {
+  var siteCounts = Session.get("siteCounts"),
+      xCategories = [],
+      seriesData = [];
+  
+  for (var i in siteCounts) {
+    xCategories.push(siteCounts[i]._id);
+    seriesData.push({'name': siteCounts[i]._id, 'y': siteCounts[i].count});
+  }
+  
+  $('#report-bar-chart').highcharts({
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: '404 Errors by page'
+    },
+    xAxis: {
+      categories: xCategories,
+      title: {
+        text: 'Sites'
+      }
+    },
+    yAxis: {
+      allowDecimals: false,
+      min: 0,
+      title: {
+        text: 'Count of 404\'s',
+        align: 'high'
+      },
+      labels: {
+        overflow: 'justify'
+      }
+    },
+    plotOptions: {
+      bar: {
+        dataLabels: {
+          enabled: true
+        }
+      }
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    series: [{
+      data: seriesData
+    }]
+  });
+};
+
 //TODO: This only runs once when loading, should it update in realtime?
 //Also, this only matches on ownerId, there should be a match on apiKey instead.
 Meteor.startup(function () {
@@ -36,7 +89,8 @@ Meteor.startup(function () {
       {$match: {'ownerId': Meteor.userId()}},
       {$project: {'errors': 1}}, 
       {$unwind: "$errors"}, 
-      {$group: {'_id': "$errors.page", 'count': {$sum: 1}}}
+      {$group: {'_id': "$errors.page", 'count': {$sum: 1}}},
+      {$sort: {'count': -1}}
     );
     
     Site.aggregate(pipe, function (err, docs) {

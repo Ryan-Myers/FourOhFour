@@ -1,13 +1,16 @@
 <template name="report">
   <div id="report">
     <h1>Report</h1>
-    <p>A current list of 404 error's on your site.</p>
+    <div id="report-bar-chart"></div>
+    <p>A detailed list of 404 error's on your site.</p>
     <div class="panel-group" id="accordion">
       {{#each sites}}
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{id}}">
-              {{page}} is counted {{count}} times.
+              <span class="page-url">{{page}}</span> 
+              <span class="page-count-seperator">-</span> 
+              <span class="page-count">{{count}}</span>
             </a>
           </h4>
         </div>
