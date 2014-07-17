@@ -56,9 +56,6 @@ Template.report.rendered = function () {
       title: {
         text: 'Count of 404\'s',
         align: 'high'
-      },
-      labels: {
-        overflow: 'justify'
       }
     },
     plotOptions: {
@@ -80,7 +77,7 @@ Template.report.rendered = function () {
   });
 };
 
-//TODO: This only runs once when loading, should it update in realtime?
+//TODO: This only runs once when loading, should it update in real time?
 //Also, this only matches on ownerId, there should be a match on apiKey instead.
 Meteor.startup(function () {
   Deps.autorun(function () {
