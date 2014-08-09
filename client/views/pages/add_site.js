@@ -5,8 +5,7 @@ Template.addSite.events({
     var site = {
       'apiKey': Random.id(),
       'ownerId': Meteor.userId(),
-      'siteName': $(e.target).find('[name=siteName]').val(),
-      'errors': []
+      'siteName': $(e.target).find('[name=siteName]').val()
     };
     
     Site.insert(site);

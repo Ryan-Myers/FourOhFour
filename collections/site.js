@@ -4,14 +4,7 @@
  *    _id: ObjectId("53964ab534e98a4b92bc218d"),
  *    apiKey: '53964aac34e98a4b92bc218c',
  *    ownerId: ObjectId("RfZGGzwLvggbArHZx"), //The user who owns this apiKey/Site.
- *    siteName: 'test.com',
- *    errors: [{
- *      status: 404,
- *      userIP: '127.0.0.1',
- *      datetime: ISODate("2014-06-10T00:00:44.687Z"),
- *      page: 'http://example.com/404.html',
- *      referer: 'http://example.com/GoodPageWithBadLink.html'
- *    }]
+ *    siteName: 'test.com'
  *  }
  *    
  */
