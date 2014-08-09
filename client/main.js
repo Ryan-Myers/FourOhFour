@@ -1,2 +1,2 @@
 Meteor.subscribe('site');
-Metoer.subscribe('error');
+Metoer.subscribe('errorList');
