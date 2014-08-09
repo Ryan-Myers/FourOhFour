@@ -28,6 +28,7 @@ Template.report.sites = function () {
 };
 
 Template.report.rendered = function () {
+  console.log(this.data.fetch());
   var siteCounts = Session.get("siteCounts"),
       xCategories = [],
       seriesData = [];
