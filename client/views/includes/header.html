@@ -8,14 +8,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">FourOhFour</a>
+        <a class="navbar-brand" href="{{pathFor 'homepage'}}">FourOhFour</a>
       </div>
       <div class="navbar-collapse collapse" id="navigationbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="/addSite">Add Site</a></li>
-          <li><a href="/instructions">Instructions</a></li>
-          <li><a href="/report">Report</a></li>
+          <li><a href="{{pathFor 'homepage'}}">Home</a></li>
+          <li><a href="{{pathFor 'addSite'}}">Add Site</a></li>
+          <li><a href="{{pathFor 'instructions'}}">Instructions</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reports <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              {{#each sites}}
+                <li><a href="{{pathFor 'report'}}">{{siteName}}</a></li>
+              {{/each}}
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{> loginButtons }}
