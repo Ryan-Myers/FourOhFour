@@ -24,7 +24,11 @@ Template.report.rendered = function () {
   
   for (var i in siteCounts) {
     xCategories.push(siteCounts[i].page);
-    seriesData.push({'name': siteCounts[i].page, 'y': siteCounts[i].errorCount});
+    seriesData.push({
+      'name': siteCounts[i].page, 
+      'y': siteCounts[i].errorCount, 
+      'url': '/reportDetails/' + siteCounts[i]._id
+    });
   }
   
   $('#report-bar-chart').highcharts({
@@ -52,6 +56,16 @@ Template.report.rendered = function () {
       bar: {
         dataLabels: {
           enabled: true
+        }
+      },
+      series: {
+        cursor: 'pointer',
+        point: {
+          events: {
+            click: function () {
+              location.href = this.options.url;
+            }
+          }
         }
       }
     },

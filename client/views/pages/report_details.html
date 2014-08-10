@@ -1,0 +1,15 @@
+<template name="reportDetails">
+  <div id="report-details">
+    <h1>Report Details - {{siteName}}</h1>
+    <p>URL of the error: {{page}}</p>
+    <div class="panel-group">
+      {{#each pageErrors}}
+        <div class="errors">
+          <div class="error-ip">userIP: {{userIP}}</div>
+          <div class="error-datetime">datetime: {{datetime}}</div>
+          <div class="error-page">referer: {{referer}}</div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</template>

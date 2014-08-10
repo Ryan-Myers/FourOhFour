@@ -1,31 +1,8 @@
 <template name="report">
   <div id="report">
     <h1>Report</h1>
+    <p>Top 20 sites by 404.</p>
+    <p class="report-message">Click on site for more details.</p>
     <div id="report-bar-chart"></div>
-    <p>A detailed list of 404 error's on your site.</p>
-    <div class="panel-group" id="accordion">
-      {{#each sites}}
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{id}}">
-              <span class="page-url">{{page}}</span> 
-              <span class="page-count-seperator">-</span> 
-              <span class="page-count">{{count}}</span>
-            </a>
-          </h4>
-        </div>
-        <div id="collapse{{id}}" class="panel-collapse collapse">
-          <div class="panel-body">
-            {{#each details}}
-              <div class="errors">
-                <div class="error-ip">userIP: {{userIP}}</div>
-                <div class="error-datetime">datetime: {{datetime}}</div>
-                <div class="error-page">referer: {{referer}}</div>
-              </div>
-            {{/each}}
-          </div>
-        </div>
-      {{/each}}
-    </div>
   </div>
 </template>
