@@ -28,14 +28,15 @@ Template.report.sites = function () {
 };
 
 Template.report.rendered = function () {
-  console.log(this.data.fetch());
-  var siteCounts = Session.get("siteCounts"),
+  var siteCounts = this.data.fetch(),
       xCategories = [],
       seriesData = [];
   
+  console.log(siteCounts);
+  
   for (var i in siteCounts) {
-    xCategories.push(siteCounts[i]._id);
-    seriesData.push({'name': siteCounts[i]._id, 'y': siteCounts[i].count});
+    xCategories.push(siteCounts[i].page);
+    seriesData.push({'name': siteCounts[i].page, 'y': siteCounts[i].errorCount});
   }
   
   $('#report-bar-chart').highcharts({

@@ -48,6 +48,7 @@
           referer = (document.referrer.length > 0) ? document.referrer : 'blank',
           a = document.createElement('a');
           a.href = scriptSrc;
+          
       var postURL = a.protocol + '//' + a.host + '/api/404',
           params = apiKey + '&page=' + location.href + '&referer=' + referer + '&status=404';
       
