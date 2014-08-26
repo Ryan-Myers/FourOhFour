@@ -4,11 +4,11 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-iron-router
+cmather:iron-router@0.8.2
 accounts-password
-spin
+sacha:spin@2.0.4
 accounts-google
 accounts-ui-bootstrap-3
 random
 aggregation
-bootswatch-cerulean
+foldor:bootswatch-cerulean@3.2.0-3
